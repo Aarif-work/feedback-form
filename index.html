@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOPE3 Foundation Feedback | Help Us Grow</title>
+    <meta name="description"
+        content="Share your feedback with HOPE3 Foundation to help us improve our website and better serve our mission.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary-color: #64748b;
+            --accent-color: #f59e0b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --input-focus: #3b82f6;
+
+            /* Professional Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            /* Deep Background Shadow */
+            --bg-shadow: 0 0 100px rgba(37, 99, 235, 0.05);
+
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(37, 99, 235, 0.05) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 60px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Background Shadow Elements for Depth */
+        .bg-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: var(--primary-color);
+            filter: blur(120px);
+            opacity: 0.03;
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), #4f46e5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+            letter-spacing: -0.03em;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .feedback-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-xl), var(--bg-shadow);
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle top border bar */
+        .feedback-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        .section {
+            margin-bottom: 45px;
+            animation: fadeIn 0.5s ease-out both;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header i {
+            color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.1);
+            padding: 10px;
+            border-radius: 12px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-header h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .form-group:focus-within label {
+            color: var(--primary-color);
+        }
+
+        label span.required {
+            color: var(--error-color);
+            margin-left: 4px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: #fff;
+            color: var(--text-main);
+        }
+
+        input:hover,
+        select:hover,
+        textarea:hover {
+            border-color: #cbd5e1;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--input-focus);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        @media (max-width: 640px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feedback-card {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            body {
+                padding: 40px 15px;
+            }
+        }
+
+        /* Custom Radio & Checkbox Styling */
+        .option-group {
+            display: grid;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .option-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+            background: #fff;
+            user-select: none;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.02);
+            transform: translateX(4px);
+        }
+
+        .option-item input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+
+        .option-item.selected {
+            border-color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary-color), #4f46e5);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.5);
+            filter: brightness(1.1);
+        }
+
+        .submit-btn:active:not(:disabled) {
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            background: var(--secondary-color);
+            cursor: not-allowed;
+            opacity: 0.6;
+            box-shadow: none;
+        }
+
+        .loader {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Success State */
+        #success-message {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+            animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-illustration {
+            width: 120px;
+            height: 120px;
+            background: var(--success-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 60px;
+            box-shadow: 0 15px 35px -5px rgba(16, 185, 129, 0.4);
+        }
+
+        .success-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 15px;
+        }
+
+        .success-text {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .reset-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: #f1f5f9;
+            color: var(--text-main);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .reset-btn:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        /* Custom rating selector enhancements */
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7' /%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            background-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-glow" style="top: 10%; left: 5%;"></div>
+    <div class="bg-glow" style="bottom: 10%; right: 5%;"></div>
+
+    <div class="container">
+        <header class="header">
+            <h1 id="title">HOPE3 Foundation</h1>
+            <p>Your insights fuel our progress. Thank you for helping us grow!</p>
+        </header>
+
+        <div class="feedback-card" id="form-container">
+            <form id="feedbackForm">
+
+                <!-- Section 1 -->
+                <div class="section" style="animation-delay: 0.1s;">
+                    <div class="section-header">
+                        <i data-lucide="user"></i>
+                        <h2>Contact Details</h2>
+                    </div>
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="name">Full Name <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" placeholder="How should we call you?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="email@example.com" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="section" style="animation-delay: 0.2s;">
+                    <div class="section-header">
+                        <i data-lucide="star"></i>
+                        <h2>Experience Scores</h2>
+                    </div>
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="overall">Overall Impression <span class="required">*</span></label>
+                            <select id="overall" name="overall" required>
+                                <option value="" disabled selected>Rate your experience</option>
+                                <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                                <option value="4">⭐⭐⭐⭐ Very Good</option>
+                                <option value="3">⭐⭐⭐ Good</option>
+                                <option value="2">⭐⭐ Fair</option>
+                                <option value="1">⭐ Poor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="design">Design & Aesthetics <span class="required">*</span></label>
+                            <select id="design" name="design" required>
+                                <option value="" disabled selected>Visual quality</option>
+                                <option value="5">5 - Exceptional</option>
+                                <option value="4">4 - Professional</option>
+                                <option value="3">3 - Standard</option>
+                                <option value="2">2 - Needs Work</option>
+                                <option value="1">1 - Poor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Content Clarity <span class="required">*</span></label>
+                            <select id="content" name="content" required>
+                                <option value="" disabled selected>Ease of understanding</option>
+                                <option value="5">5 - Crystal Clear</option>
+                                <option value="4">4 - Very Good</option>
+                                <option value="3">3 - Readable</option>
+                                <option value="2">2 - Confusing</option>
+                                <option value="1">1 - Poor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">Mobile Experience <span class="required">*</span></label>
+                            <select id="mobile" name="mobile" required>
+                                <option value="" disabled selected>Usability on phone</option>
+                                <option value="5">5 - Perfect</option>
+                                <option value="4">4 - Smooth</option>
+                                <option value="3">3 - Okay</option>
+                                <option value="2">2 - Improving</option>
+                                <option value="1">1 - Issues</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="section" style="animation-delay: 0.3s;">
+                    <div class="section-header">
+                        <i data-lucide="target"></i>
+                        <h2>Mission & Trust</h2>
+                    </div>
+                    <div class="form-group">
+                        <label>Does the website clearly explain our foundation’s mission? <span
+                                class="required">*</span></label>
+                        <div class="option-group">
+                            <label class="option-item">
+                                <input type="radio" name="mission" value="Very clear" required>
+                                <span>Clearly explained and accessible</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="mission" value="Somewhat clear">
+                                <span>Mostly clear, but needs details</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="mission" value="Not clear">
+                                <span>I couldn't find/understand it</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Does the design build trust for potential supporters? <span
+                                class="required">*</span></label>
+                        <div class="option-group">
+                            <label class="option-item">
+                                <input type="radio" name="trust" value="Yes" required>
+                                <span>Yes, looks highly credible</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="trust" value="Not sure">
+                                <span>Neutral / Not sure</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="trust" value="No">
+                                <span>No, needs more trust factors</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="section" style="animation-delay: 0.4s;">
+                    <div class="section-header">
+                        <i data-lucide="layers"></i>
+                        <h2>Content Evaluation</h2>
+                    </div>
+                    <div class="form-group">
+                        <label>Which sections did you find most useful? (Multi-select)</label>
+                        <div class="checkbox-grid">
+                            <label class="option-item"><input type="checkbox" name="sections" value="Home">
+                                <span>Home</span></label>
+                            <label class="option-item"><input type="checkbox" name="sections" value="Why HOPE3">
+                                <span>Why HOPE3</span></label>
+                            <label class="option-item"><input type="checkbox" name="sections" value="HOPE3 Journey">
+                                <span>Journey</span></label>
+                            <label class="option-item"><input type="checkbox" name="sections" value="Our Students">
+                                <span>Students</span></label>
+                            <label class="option-item"><input type="checkbox" name="sections" value="Our Projects">
+                                <span>Projects</span></label>
+                            <label class="option-item"><input type="checkbox" name="sections"
+                                    value="Leadership & Board"> <span>Leadership</span></label>
+                            <label class="option-item"><input type="checkbox" name="sections" value="Financials">
+                                <span>Financials</span></label>
+                            <label class="option-item"><input type="checkbox" name="sections" value="Media">
+                                <span>Media</span></label>
+                            <label class="option-item"><input type="checkbox" name="sections" value="Donate">
+                                <span>Donate</span></label>
+                            <label class="option-item"><input type="checkbox" name="sections" value="Join HOPE3">
+                                <span>Join Us</span></label>
+                            <label class="option-item"><input type="checkbox" name="sections" value="Feedback">
+                                <span>Feedback</span></label>
+                            <label class="option-item"><input type="checkbox" name="sections" value="FAQ">
+                                <span>FAQ</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5 -->
+                <div class="section" style="animation-delay: 0.5s;">
+                    <div class="section-header">
+                        <i data-lucide="message-square"></i>
+                        <h2>Detailed Feedback</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="features">Suggested Features</label>
+                        <textarea id="features" name="features"
+                            placeholder="What else would you like to see?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="issues">Technical Hurdles</label>
+                        <textarea id="issues" name="issues" placeholder="Any bugs or mobile issues?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Final Thoughts</label>
+                        <textarea id="comment" name="comment"
+                            placeholder="Your message to the developers..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="btnText">Send Feedback</span>
+                    <i data-lucide="send" id="sendIcon"></i>
+                    <div class="loader" id="loader"></div>
+                </button>
+            </form>
+        </div>
+
+        <div id="success-message">
+            <div class="success-illustration">
+                <i data-lucide="check"></i>
+            </div>
+            <h2 class="success-title">Feedback Received!</h2>
+            <p class="success-text">Your contribution helps us build a better platform for everyone. We truly value your
+                time.</p>
+            <a href="#" class="reset-btn" onclick="location.reload(); return false;">
+                <i data-lucide="rotate-ccw"></i>
+                Submit Another Response
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        const endpoint = 'https://script.google.com/macros/s/AKfycbwrLdCRTBSU9p7P6gEXsJR3LeDpSDvXfLLL3Ofival9suzXhrvsNrB1AYE5iplCL-IZ/exec';
+        const form = document.getElementById('feedbackForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const sendIcon = document.getElementById('sendIcon');
+        const loader = document.getElementById('loader');
+        const formContainer = document.getElementById('form-container');
+        const successMessage = document.getElementById('success-message');
+
+        // Toggle 'selected' class for better UX on radio/checkbox clicks
+        document.querySelectorAll('.option-item').forEach(item => {
+            const input = item.querySelector('input');
+
+            // Check initial state
+            if (input.checked) item.classList.add('selected');
+
+            item.addEventListener('click', (e) => {
+                if (e.target !== input) input.click();
+            });
+
+            input.addEventListener('change', () => {
+                // If it's a radio, clear others in the same group
+                if (input.type === 'radio') {
+                    document.querySelectorAll(`input[name="${input.name}"]`).forEach(rad => {
+                        rad.parentElement.classList.remove('selected');
+                    });
+                }
+
+                if (input.checked) {
+                    item.classList.add('selected');
+                } else {
+                    item.classList.remove('selected');
+                }
+            });
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Loading State
+            submitBtn.disabled = true;
+            btnText.textContent = 'Sending...';
+            sendIcon.style.display = 'none';
+            loader.style.display = 'block';
+
+            const formData = new FormData(form);
+            const selectedSections = Array.from(form.querySelectorAll('input[name="sections"]:checked')).map(cb => cb.value);
+
+            const payload = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                overall: formData.get('overall'),
+                design: formData.get('design'),
+                content: formData.get('content'),
+                mobile: formData.get('mobile'),
+                mission: formData.get('mission'),
+                trust: formData.get('trust'),
+                sections: selectedSections.join(', '),
+                features: formData.get('features'),
+                issues: formData.get('issues'),
+                comment: formData.get('comment')
+            };
+
+            try {
+                // Submit to Google Apps Script
+                await fetch(endpoint, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                // Success View
+                formContainer.style.display = 'none';
+                successMessage.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Refresh icons in success message
+                lucide.createIcons();
+
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert('Connection error. Your feedback is important—please try again after checking your internet.');
+
+                // Reset State
+                submitBtn.disabled = false;
+                btnText.textContent = 'Send Feedback';
+                sendIcon.style.display = 'block';
+                loader.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
